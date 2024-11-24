@@ -5,17 +5,24 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Environment {
+public class DefectHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private String description;
     @ManyToOne
-    @JoinColumn(name = "created_by")
-    private User createdBy;
+    @JoinColumn(name = "defect_id")
+    private Defect defect;
+    private String oldStatus;
+    private String newStatus;
+    private String comment;
+    private Date changedOn;
+    @ManyToOne
+    @JoinColumn(name = "changed_by")
+    private User changedBy;
 }

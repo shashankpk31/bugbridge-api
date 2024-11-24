@@ -29,4 +29,7 @@ public class Defect {
     @ManyToOne
     @JoinColumn(name = "environment_id")
     private Environment environment;
+    @ManyToOne
+    @JoinColumn(name = "created_by")
+    private User createdBy;
 }
